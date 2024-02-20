@@ -1,0 +1,27 @@
+ul{
+    list-style: none;
+    display: flex;
+    background-color: grey;
+    width: fit-content;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem ;
+    border-radius: 0.3rem;
+}
+li{
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding: 1rem;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+a:hover{
+    color: wheat;
+}
+a.active{
+    background-color: wheat;
+    padding: 0.5rem;
+    border-radius: 10px;
+    color: grey;
+}

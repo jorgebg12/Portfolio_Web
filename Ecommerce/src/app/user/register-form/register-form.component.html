@@ -1,0 +1,37 @@
+<h2>Register:</h2>
+<h3 *ngIf="message">{{message}}</h3>
+
+<form (ngSubmit)="register()" [formGroup]="registerForm">
+
+    <div class="register-username">
+        <input type="text"
+            placeholder="Name"
+            name="username"
+            formControlName="username"
+            required>
+
+        <div *ngIf="username.invalid && 
+            (username.dirty || username.touched)"  
+            class="input-error">
+            <div *ngIf="username.errors.required">Username is required</div>
+            <div *ngIf="username.errors.invalidName">This name is invalid</div>
+        </div>
+    </div>
+
+    <div class="register-password">
+        <input type="password"
+            placeholder="Password"
+            name="password"
+            formControlName="password"
+            required>
+            
+        <div *ngIf="password.invalid && 
+            (password.dirty || password.touched)"  
+            class="input-error">
+            <div *ngIf="password.errors.required">Password is required</div>
+            <div *ngIf="password.errors.invalidName">Invalid password</div>
+        </div>
+    </div>
+    <button type="submit">Register</button>
+</form>
+

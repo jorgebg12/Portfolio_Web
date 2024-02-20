@@ -1,0 +1,15 @@
+<div class="article-container"
+        [class]="article.isOnSale ? 'available' : 'sold-out'">
+    <a routerLink="/article/{{article.id}}"><img [src]="article.imageUrl | urlCheck" alt="pancake"></a>
+    <div class="article-description">
+        <div class="article-name">{{article.name}}</div>
+        <div class="article-price" [ngClass]="article.isOnSale ? 'price-enabled' : 'price-disabled'">
+            Price:{{article.price | currency:'EUR':'symbol': '1.2-2'}}</div>
+        <div class="article-cart" *ngIf="article.isOnSale"> 
+            <button (click)="onRemoveItemOnCart($event)"
+            [disabled]="article.quantityInCart <= 0">-</button>
+            <div class="article-cuantity">{{article.quantityInCart}}</div>
+            <button (click)="onAddItemOnCart($event)">+</button>
+        </div>    
+    </div>
+</div>

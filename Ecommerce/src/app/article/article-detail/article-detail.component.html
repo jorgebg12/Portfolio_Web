@@ -1,0 +1,11 @@
+<div class="article-detail" routerLink="/article/{{article.id}}">
+    <img [src]="article.imageUrl | urlCheck" alt="Image of the article">
+    <div class="article-description">
+        <h1 class="article-name">{{article.name}}</h1>
+        <h2 class="article-price" [ngClass]="article.isOnSale ? 'price-enabled' : 'price-disabled'">
+            Price:{{article.price | currency:'EUR':'symbol': '1.2-2'}}</h2>
+        <div class="article-cart" *ngIf="!article.isOnSale">
+            <h3>Sold-out</h3>
+        </div>    
+    </div>
+</div>

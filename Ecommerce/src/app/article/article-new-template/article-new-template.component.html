@@ -1,0 +1,51 @@
+<h2>Create new article template:</h2>
+<form (ngSubmit)="createArticle(articleForm)" #articleForm="ngForm">
+    <div ngModelGroup="article">
+        <div class="article-name">
+            <input type="text"
+                placeholder="Article name"
+                name="articleName"
+                #articleName="ngModel"
+                ngModel
+                required>
+            <div *ngIf="articleName.invalid && (articleName.dirty || articleName.touched || articleForm.submitted)"  class="input-error">
+                <div *ngIf="articleName.errors.required">Article name is required</div>
+            </div>
+        </div>
+        <div class="article-price">
+            <input type="text"
+                placeholder="Article price"
+                name="articlePrice"
+                #articlePrice = "ngModel"
+                pattern="^\d+(\.\d{1,2})?$"
+                ngModel
+                required>
+            <div *ngIf="articlePrice.invalid && (articlePrice.dirty || articlePrice.touched || articleForm.submitted)"  class="input-error">
+                <div *ngIf="articlePrice.errors.required">Article price is required</div>
+                <div *ngIf="articlePrice.errors.pattern">Article price is invalid</div>
+            </div>
+        </div>
+        <div class="article-image-url">
+            <input type="text"
+                placeholder="Article image url"
+                name="articleUrl"
+                #articleUrl="ngModel"
+                pattern="(https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z0-9]{2,}(\.[a-zA-Z0-9]{2,})(\.[a-zA-Z0-9]{2,3}).*"
+                ngModel
+                required>
+            <div *ngIf="articleUrl.invalid && (articleUrl.dirty || articleUrl.touched || articleForm.submitted)" class="input-error">
+                <div *ngIf="articleUrl.errors.required">Article URL is required</div>
+                <div *ngIf="articleUrl.errors.pattern">Article URL invalid</div>
+            </div>
+        </div>
+        <div class="article-aviable">
+            <input type="checkbox"
+                name="articleOnsale"
+                #articleOnsale="ngModel"
+                ngModel>
+            <label for="onsale">On Sale</label>
+        </div>
+    </div>
+    <button type="submit">Create</button>
+</form>
+<!-- <h4> article : {{article| json}}</h4> -->
